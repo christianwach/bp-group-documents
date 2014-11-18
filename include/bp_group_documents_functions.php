@@ -81,7 +81,7 @@ function bp_group_documents_display_content() {
                                     <?php else: ?>
                                         <label><?php _e( 'Document:' , 'bp-group-documents' ) ; ?>:</label><span><?php echo $template->name ; ?></span>
 
-                                        <?php endif; ?> 
+                                        <?php endif; ?>
 
                                         <div id="document-detail-clear" class="clear"></div>
                                         <div class="bp-group-documents-document-info">
@@ -196,11 +196,15 @@ function bp_group_documents_display_content() {
                         $count = 0 ;
                         foreach ( $template->document_list as $document_params ) {
                             $document = new BP_Group_Documents( $document_params[ 'id' ] , $document_params ) ;
+
+                            $_class = '';
+                            $classes = array();
+                            if ( ++ $count % 2 ) $classes[] = 'alt';
+                            if ( $document->featured ) $classes[] = 'featured';
+                            if ( count( $classes ) > 0 ) $_class = ' class="' . implode( ' ', $classes ) . '"';
+
                             ?>
-                            <li <?php
-                            if ( ++ $count % 2 )
-                                echo 'class="alt"' ;
-                            ?> >
+                            <li<?php echo $_class; ?>>
 
 					<?php
 				    //show edit and delete options if user is privileged
@@ -214,7 +218,7 @@ function bp_group_documents_display_content() {
 					    echo "<a href='$delete_link' class='bp-group-documents-delete'>" . __( 'Delete' , 'bp-group-documents' ) . "</a>" ;
 				    }
 				    echo '</div>' ;
-					?> 
+					?>
 
                                     <?php
                                     if ( get_option( 'bp_group_documents_display_icons' ) )
@@ -278,7 +282,7 @@ function bp_group_documents_display_content() {
 
                             <?php }
 			//-------------------------------------------------------------------DETAIL VIEW--
-				?> 
+				?>
 
                 <?php if ( $template->document_list && count( $template->document_list >= 1 ) ) { ?>
                     <div class="pagination no-ajax">

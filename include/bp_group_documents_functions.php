@@ -211,11 +211,11 @@ function bp_group_documents_display_content() {
 				    echo '<div class="admin-links">' ;
 				    if ( $document->current_user_can( 'edit' ) ) {
 					    $edit_link = wp_nonce_url( $template->action_link . 'edit/' . $document->id , 'group-documents-edit-link' ) . '#edit-document-form' ;
-					    echo "<a href='$edit_link'>" . __( 'Edit' , 'bp-group-documents' ) . "</a>" ;
+					    echo "<a class='button' href='$edit_link'>" . __( 'Edit' , 'bp-group-documents' ) . "</a>" ;
 				    }
 				    if ( $document->current_user_can( 'delete' ) ) {
 					    $delete_link = wp_nonce_url( $template->action_link . 'delete/' . $document->id , 'group-documents-delete-link' ) ;
-					    echo "<a href='$delete_link' class='bp-group-documents-delete'>" . __( 'Delete' , 'bp-group-documents' ) . "</a>" ;
+					    echo "<a class='button' href='$delete_link' class='bp-group-documents-delete'>" . __( 'Delete' , 'bp-group-documents' ) . "</a>" ;
 				    }
 				    echo '</div>' ;
 					?>
